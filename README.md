@@ -18,10 +18,16 @@ As of right now, I only know how to set-up the development environment for MacOS
     - Since react-native is written in Javascript, we need a JS runtime environment.
 
 - [Watchman](https://facebook.github.io/watchman/)
-    - Watchman keeps track of changes in your files; when we build front end, Watchman builds and updates our app on the simulator without us manually building/refreshing the app everytime.
+    - Watchman keeps track of changes in your files; while you are working on the front end, Watchman will build and update the app on the simulator so you don't need to build/refresh the app manually everytime.
  
-- [Xcode] (https://developer.apple.com/xcode/)
-    - This is an IDE for iOS (Swift/Objective C) and how we will be simulating our app (Only for MacOs).
+- [Xcode](https://developer.apple.com/xcode/)
+    - This is an IDE for iOS (Swift/Objective C) and how we will be simulating our app (Only for MacOS).
+
+- [React-Native CLI](https://facebook.github.io/react-native/)
+    - This is the CLI for the framework we are using for developing the frontend, install it using `npm`:
+        ```bash
+        $ npm install -g react-native-cli
+        ```
 
 ### iOS Simulator 
 
