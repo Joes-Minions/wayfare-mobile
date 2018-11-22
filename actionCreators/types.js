@@ -1,0 +1,13 @@
+export const EMAIL_CHANGED = 'email_changed'
+export const PASSWORD_CHANGED = 'password_changed'
+export const SIGN_IN_SUCCESS = 'sign_in_user_success'
+export const SIGN_IN_FAIL = 'sign_in_user_fail'
+export const SIGN_OUT_SUCCESS = 'sign_out_user_success'
+export const SIGN_OUT_FAIL = 'sign_out_user_fail'
+export const GET_USERS = 'get_users'
+export const GET_USER_DETAIL = 'get_user_detail'
+export const USER_ERROR = 'user_error'
+
+export const ADD_RIDES = 'add_rides'
+export const SET_RIDES = 'set_rides'
+export const REMOVE_RIDES = 'remove_rides'
