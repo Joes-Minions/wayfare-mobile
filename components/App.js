@@ -8,6 +8,8 @@
 
 import React from 'react'
 import ReactNative,{ Platform, StyleSheet, Text, View } from 'react-native'
+import Router from '../'
+import { Actions } from 'react-native-router-flux';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -21,7 +23,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>WHAT UP BITCH!</Text>
+        <Text style={styles.welcome} onPress={() => Actions.login()} >Press Me</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
       </View>
