@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux'
 import Rides from './Rides'
 import Session from './Session'
-import Users from './Users'
+import CreateUser from './CreateUser'
 
-const rootReducer = combineReducers({ Session, Rides, Users })
+const rootReducer = combineReducers({ 
+    session: Session,
+    createUserForm: CreateUser
+})
 
 export default rootReducer
