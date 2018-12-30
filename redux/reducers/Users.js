@@ -16,7 +16,7 @@ function User (state = [], action) {
     case GET_USERS:
       return state.concat(action.users)
     case GET_USER_DETAIL:
-      return state.contact([action.user])
+      return state.contat([action.user])
     case USER_ERROR:
       return state
     default:
