@@ -18,11 +18,13 @@ const RouterComponent = () => {
     return (
         <Router>
             <Stack key = 'root' hideNavBar>
-                <Scene key='auth' >
+                <Scene key='auth'>
                         <Scene
                             key='landing'
                             component={Landing}
-                            hideNavBar
+                            title="Welcome!"
+                            titleStyle={styles.landingTitleStyle}
+                            navigationBarStyle={styles.authStyle}
                             initial
                         />
                         <Scene 
@@ -30,6 +32,8 @@ const RouterComponent = () => {
                             component={LandingAuth}
                             back
                             title="WayFare"
+                            navigationBarStyle={styles.authStyle}
+                            navBarButtonColor='#E4EDF2'
                         />
                         <Scene  
                             key="findRide"
@@ -50,10 +54,13 @@ const RouterComponent = () => {
     )
 }
 const styles = {
-    tabBarStyle: {
-        flexDirection: 'column',
-        justifyContent:'center',        
+    landingTitleStyle:{
+        color:'#E4EDF2'
+    },
+    authStyle: {
+        backgroundColor: '#1D394B'
     }
+
   }
 
 

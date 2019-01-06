@@ -89,10 +89,11 @@ const styles = {
         padding:0
     },
     button:{
-        backgroundColor: '#2F5167'
+        backgroundColor: '#1D394B'
     },
     buttonPress:{
-        backgroundColor: '#000066'
+        backgroundColor: '#2F5167',
+        borderBottomColor: '#2F5167'
     }
   }
 

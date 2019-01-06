@@ -1,9 +1,10 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, ImageBackground } from 'react-native'
 import { 
     Card,
     CardSection,
-    Button
+    Button,
+    LogoBanner
 } from '../common'
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -16,43 +17,47 @@ class Landing extends React.Component {
     
     render(){
         return(
-            <Card style={styles.cardStyle}>
-                <CardSection style={styles.LogoContainerStyle}>
-
+            <ImageBackground 
+                style={styles.cardStyle}
+                source={require('../img/hero.jpg')}
+            >
+                <CardSection style={styles.logoContainerStyle}>
+                    
                 </CardSection>
-                <CardSection style={styles.LogInContainerStyle}>
+                <CardSection style={styles.menuContainerStyle}>
                     <Button
                         label="Sign In or Sign Up"
                         onPress={()=>Actions.landingAuth()}
+                        style={styles.buttonStyle}
+                        
                     />
-                </CardSection>
-                <CardSection style={styles.SignUpContainerStyle}>
                     <Button
                         label="Get Started"
                         onPress={()=>Actions.findRide()}
+                        style={styles.buttonStyle}
                     />
                 </CardSection>
-            </Card>
+            </ImageBackground>
         )
     }
 }
 const styles = {
-    LogoContainerStyle:{
-        flex:1
+    logoContainerStyle:{
+        flex: 1,
+        justifyContent: 'center'
     },
-    LogInContainerStyle: {
+    menuContainerStyle: {
         flex:.5,
         flexDirection: 'column',        
     },
     cardStyle:{
         flex: 1,
-        flexDirection: 'column',
-        alignItems: 'stretch',
+        width: '100%',
+        height:'100%'
+        
     },
-    SignUpContainerStyle:{
-        flex:1,
-        flexDirection:'column',
-        justifyContent:'center'
+    buttonStyle:{
+        backgroundColor:'#1D394B',
     }
 
   }

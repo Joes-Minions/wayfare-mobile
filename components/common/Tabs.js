@@ -18,8 +18,8 @@ const styles = {
         borderColor: 'white',
         alignItems: 'center',
         backgroundColor: '#2F5167',
-        borderColor:'#FFFFFF',
-        borderWidth: 0.5,
+        borderBottomColor:'#F08317',
+        borderBottomWidth: 1,
     },
     textStyle: {
         color: 'white',
