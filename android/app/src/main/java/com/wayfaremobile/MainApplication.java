@@ -1,4 +1,4 @@
-package com.polyridesmobile;
+package com.wayfaremobile;
 
 import android.app.Application;
 
