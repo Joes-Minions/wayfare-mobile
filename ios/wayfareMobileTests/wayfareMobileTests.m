@@ -14,11 +14,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface polyridesMobileTests : XCTestCase
+@interface wayfareMobileTests : XCTestCase
 
 @end
 
-@implementation polyridesMobileTests
+@implementation wayfareMobileTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
