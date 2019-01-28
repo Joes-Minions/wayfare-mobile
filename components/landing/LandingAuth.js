@@ -1,45 +1,46 @@
-import React from 'react'
-import { Text,View } from 'react-native'
+import React from 'react';
+import { Text,View } from 'react-native';
 import { 
     Card,
     Input,
     CardSection,
     Button,
     Tabs
-} from '../common'
-import LandingLogIn from './LandingLogIn'
-import LandingSignUp from '../signUp/LandingSignUp'
+} from '../common';
+import LandingLogIn from './LandingLogIn';
+import LandingSignUp from '../signUp/LandingSignUp';
 
 /**
  *  Landing Auth Page
  */
 function RenderByTab(props){
-    console.log(props.tab)
+    console.log("Displaying " + (props.tab ? "SignIn" : "SignUp") + " Tab");
+    // props.tab indicates to display SignIn (true) or SignUp (false) Component
     switch (props.tab) {
         case false:
-            return <LandingSignUp/>
+            return <LandingSignUp/>;
         default:
-            return <LandingLogIn/>
+            return <LandingLogIn/>;
     }
 }
 
 class LandingAuth extends React.Component {
     constructor(props){
-        super()
+        super();
         this.state = {
             tab: true
         }
-        this.renderSignUp = this.renderSignUp.bind(this)
-        this.renderLogIn = this.renderLogIn.bind(this)
+        this.renderSignUp = this.renderSignUp.bind(this);
+        this.renderLogIn = this.renderLogIn.bind(this);
     }
 
     renderLogIn(event){
-        console.log('renderlog in clicked ')
-        if (this.state.tab == false){
+        console.log('renderlogIn clicked');
+        if (this.state.tab == false) {
             console.log('is false ')
             this.setState(()=>({
                 tab: true
-            }))
+            }));
         }
     }
     renderSignUp(event){
@@ -54,7 +55,7 @@ class LandingAuth extends React.Component {
 
     
     render(){
-        return(
+        return (
             <Card style={styles.containerStyle}>
                 <CardSection style={styles.tabSectionStyle}>
                     <Tabs 
@@ -97,4 +98,4 @@ const styles = {
     }
   }
 
-export default LandingAuth
+export default LandingAuth;

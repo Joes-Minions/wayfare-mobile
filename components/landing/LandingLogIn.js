@@ -47,22 +47,22 @@ class LandingLogIn extends React.Component {
                         label='facebook log in'
                     />
                 </CardSection>
+
                 <CardSection style={styles.dividerContainerStyle}>
                     <Text>
-                    OR
+                        OR
                     </Text>
                 </CardSection>
-                    
 
                 <CardSection style={styles.loginContainerStyle}>
                     <Input
                         label='Email'
                         placeholder='YourName@school.edu'
                         onChangeText={this.onEmailChange.bind(this)}
-                       
                     />
                     <Input
                         label='Password'
+                        placeholder='password'
                         secureTextEntry
                         onChangeText={this.onPasswordChange.bind(this)}
                     />
@@ -70,9 +70,7 @@ class LandingLogIn extends React.Component {
                         {this.props.error}
                     </Text>
                     <CardSection style={styles.buttonStyle}>
-                        {
-                            this.renderButton()
-                        }
+                        {this.renderButton()}
                 </CardSection>
                 </CardSection>
                 
@@ -88,6 +86,7 @@ const styles = {
     },
     facebookContainerStyle: {
         flex: 1,
+        marginTop: 15
     },
     errorTextStyle: {
         fontSize: 20,

@@ -169,7 +169,6 @@ class LandingSignUp extends React.Component {
                     />
                     <Button
                         label='Back'
-                        
                         onPress={this.decrementIndex.bind(this)}
                     />
                 </CardSection>
@@ -182,15 +181,16 @@ class LandingSignUp extends React.Component {
         const { errors } = this.state
 
         return(
-            <Card  style={styles.containerStyle}>
+            <Card style={styles.containerStyle}>
                 <CardSection style={styles.formStyle}>
                     <RenderByIndex
                         index={this.state.index}
                     />
                 </CardSection>
-                        {errors.map(error=> (
-                            <Text key={error}> Error: {error}</Text>
-                        ))}
+                
+                {errors.map(error=> (
+                    <Text key={error}> Error: {error}</Text>
+                ))}
 
                 {this.renderButtons()}
             </Card>

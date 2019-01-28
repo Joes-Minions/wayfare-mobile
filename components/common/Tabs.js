@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 import {Card} from './'
 
-const Tabs = ( props) => {
+const Tabs = (props) => {
   return (
         <TouchableOpacity style={[styles.buttonStyle, props.style]} onPress={props.onPress}>
             <Text style={styles.textStyle}>
