@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import { 
-    Card
+    Card,
+    HeaderWithMenu
 } from './common';
 
 /**
@@ -12,8 +14,7 @@ class Dashboard extends Component {
     render() {
         console.log("Dashboard User: " + this.props.user);
         return (
-            <Card>
-            </Card>
+            <HeaderWithMenu title="Dashboard" />
         );
     }
 }
