@@ -1,12 +1,15 @@
 import React from 'react'
-import { Scene, Router, Tabs, Stack, Drawer, ActionConst } from 'react-native-router-flux'
+import { Scene, Router, Tabs, Stack, Drawer, ActionConst, Actions } from 'react-native-router-flux'
 import { Text } from 'react-native';
 import Dashboard from './Dashboard'
 import LandingAuth from './landing/LandingAuth'
 import Landing from './landing/Landing'
 import LandingGetStarted from './landing/LandingGetStarted'
 import SideMenu from './SideMenu';
+import FindRide from './FindRide';
+
 import Account from './Account';
+import { SideMenuButton } from './common';
 
 
 /**
@@ -45,28 +48,42 @@ const RouterComponent = () => {
                         title="Get Started"
                     />
                 </Scene>
-                <Scene key='main'>
+               
+                <Scene key='main' panHandlers={null}>
+                    
                     <Drawer
                         key="drawerMenu"
                         contentComponent={SideMenu}
-                        type={ActionConst.RESET}
+                        type='reset'
                         hideNavBar
-                    >
-                        <Scene
-                            key='dashboard'
-                            component={Dashboard}
-                            title='WayFare'
-                            //titleStyle={styles.titleStyle}
-                            //navigationBarStyle={styles.navbarAuthStyle}
-                            hideNavBar
-                        />
-                        <Scene
-                            key="account"
-                            title="Your Account"
-                            component={Account}
-                            hideNavBar
-                        />
+                    >   
+
+                        <Scene key="dashboard" hideNavBar panHandlers={null}>
+                            <Tabs
+                                key="tabbar"
+                            >
+                                <Stack title='asd'>
+                                    <Scene key="tab1" component={FindRide} />
+
+                                </Stack>
+                                <Stack>
+                                    <Scene key="tab2" component={FindRide} />
+                                </Stack>
+                            {
+                            }
+                            </Tabs>
+                            <Scene
+                                key='account'
+                                component={Account}
+                                title='account'
+                                back
+                                onBack={()=>Actions.pop()}
+                                panHandlers
+                            />
+                        </Scene>
                     </Drawer>
+        
+                        
                 </Scene>
             </Stack>
         </Router>

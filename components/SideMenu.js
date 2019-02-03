@@ -33,7 +33,7 @@ class SideMenu extends Component {
                         </Body>
                      </ListItem>
 
-                     <ListItem icon onPress={() => Actions.account()}>
+                     <ListItem icon onPress={()=> Actions.account()}>
                         <Left>
                            <AntDesign name="bars" size={20} />
                         </Left>

@@ -39,7 +39,7 @@ const styles = {
    },
    headerTitleStyle: {
       color: '#FFFFFF',
-      fontFamily: 'OpenSans-Regular',
+      //fontFamily: 'OpenSans-Regular',
       fontSize: 18
    }
 };

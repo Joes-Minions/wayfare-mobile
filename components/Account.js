@@ -6,7 +6,7 @@ class Account extends Component {
    render() {
       return (
          <View style={styles.containerStyle}>
-            <HeaderWithMenu title="Account" />
+            
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                <Text>Account Page</Text> 
             </View>
