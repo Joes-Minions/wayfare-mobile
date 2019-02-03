@@ -10,6 +10,8 @@ class SideMenu extends Component {
       const { email } = this.props.user.user;
       return (
          <View style={styles.menuContainerStyle}>
+            {/* Transparent filler padding to see Iphone status bar */}
+            <View style={styles.transparentPaddingStyle} />
             {/* Profile Container */}
             <View style={styles.profileContainerStyle}>
                <Text>Profile Picture HERE</Text>
@@ -51,8 +53,12 @@ const styles = {
    menuContainerStyle: {
       flex: 1
    },
+   transparentPaddingStyle: {
+      height: 20,
+      backgroundColor: '#1D394B'
+   },
    profileContainerStyle: {
-      backgroundColor: "#2980b9",
+      backgroundColor: '#2980b9',
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center'
