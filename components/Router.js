@@ -1,10 +1,12 @@
 import React from 'react'
-import { Scene, Router, Tabs, Stack} from 'react-native-router-flux'
+import { Scene, Router, Tabs, Stack, Drawer, ActionConst } from 'react-native-router-flux'
+import { Text } from 'react-native';
 import Dashboard from './Dashboard'
-import Icon from 'react-native-vector-icons/FontAwesome'
 import LandingAuth from './landing/LandingAuth'
 import Landing from './landing/Landing'
 import LandingGetStarted from './landing/LandingGetStarted'
+import SideMenu from './SideMenu';
+import Account from './Account';
 
 
 /**
@@ -17,51 +19,73 @@ const RouterComponent = () => {
  
     return (
         <Router>
-            <Stack key = 'root' hideNavBar>
-                <Scene key='auth' hideNavBar>
-                        <Scene
-                            key='landing'
-                            component={Landing}
-                            title="Welcome!"
-                            titleStyle={styles.landingTitleStyle}
-                            navigationBarStyle={styles.authStyle}
-                            initial
-                        />
-                        <Scene 
-                            key='landingAuth' 
-                            component={LandingAuth}
-                            back
-                            title="WayFare"
-                            navigationBarStyle={styles.authStyle}
-                            navBarButtonColor='#E4EDF2'
-                        />
-                        <Scene  
-                            key="findRide"
-                            component={LandingGetStarted}
-                            back
-                            title="Get Started"
-                        />
+            <Stack key='root' hideNavBar>
+                <Scene key='auth'>
+                    <Scene
+                        key='landing'
+                        component={Landing}
+                        title="Welcome!"
+                        titleStyle={styles.titleStyle}
+                        navigationBarStyle={styles.navbarAuthStyle}
+                        initial
+                    />
+                    <Scene 
+                        key='landingAuth' 
+                        component={LandingAuth}
+                        back
+                        title="WayFare"
+                        titleStyle={styles.titleStyle}
+                        navigationBarStyle={styles.navbarAuthStyle}
+                        navBarButtonColor='#E4EDF2'
+                    />
+                    <Scene  
+                        key="findRide"
+                        component={LandingGetStarted}
+                        back
+                        title="Get Started"
+                    />
                 </Scene>
                 <Scene key='main'>
-                    <Scene
-                        key='dashboard'
-                        component={Dashboard}
-                        title='WayFare'
-                    />
+                    <Drawer
+                        key="drawerMenu"
+                        contentComponent={SideMenu}
+                        type={ActionConst.RESET}
+                        hideNavBar
+                    >
+                        <Scene
+                            key='dashboard'
+                            component={Dashboard}
+                            title='WayFare'
+                            //titleStyle={styles.titleStyle}
+                            //navigationBarStyle={styles.navbarAuthStyle}
+                            hideNavBar
+                        />
+                        <Scene
+                            key="account"
+                            title="Your Account"
+                            component={Account}
+                            hideNavBar
+                        />
+                    </Drawer>
                 </Scene>
             </Stack>
         </Router>
     )
 }
+
+const colors = {
+    whiteBlue: '#E4EDF2',
+    wayfareBlue: '#1D394B'
+};
+
 const styles = {
-    landingTitleStyle:{
-        color:'#E4EDF2'
+    titleStyle: {
+        color: 'white',
+        fontSize: 18
     },
-    authStyle: {
-        backgroundColor: '#1D394B'
+    navbarAuthStyle: {
+        backgroundColor: colors.wayfareBlue
     }
+}
 
-  }
-
-
-export default RouterComponent
+export default RouterComponent;

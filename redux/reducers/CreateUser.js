@@ -17,11 +17,11 @@ import {
    */
   const INITIAL_STATE = {
     firstName: '',
-    lastName:'',
+    lastName: '',
     email: '',
     password: '',
-    confirmPassword:'',
-    error:'',
+    confirmPassword: '',
+    error: ''
   }
   
   function CreateUser (state = INITIAL_STATE, action) {
@@ -29,9 +29,6 @@ import {
     switch (action.type) {
         case CREATE_ACCOUNT_UPDATE:
             return { ...state, [action.payload.prop]: action.payload.value }
-        case CREATE_USER:
-            console.log('created')
-            return { ...state, error: ''}
         case NEXT_AUTH_STEP:
             return { ...state, error: ''}
         case NEXT_SUCCESS:

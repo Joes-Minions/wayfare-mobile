@@ -1,6 +1,7 @@
 // Signing In
 export const EMAIL_CHANGED = 'email_changed'
 export const PASSWORD_CHANGED = 'password_changed'
+export const SIGN_IN = 'sign_in'
 export const SIGN_IN_SUCCESS = 'sign_in_user_success'
 export const SIGN_IN_FAIL = 'sign_in_user_fail'
 export const SIGN_OUT_SUCCESS = 'sign_out_user_success'

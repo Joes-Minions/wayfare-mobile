@@ -5,7 +5,8 @@ import {
   SIGN_OUT_FAIL,
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
-  SIGN_IN
+  SIGN_IN,
+  CREATE_USER
 } from '../../actionCreators/types'
 
 /**
@@ -29,6 +30,8 @@ function Session (state = INITIAL_STATE, action) {
       return { ...state, email: action.payload }
     case PASSWORD_CHANGED:
       return { ...state, password: action.payload }
+    case CREATE_USER:
+      return { ...state, ...INITIAL_STATE, user: action.payload };
     case SIGN_IN:
       return { ...state, loading: true, error: '' }
     case SIGN_IN_SUCCESS:

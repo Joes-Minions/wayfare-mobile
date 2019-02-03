@@ -1,11 +1,11 @@
-import React from 'react'
-import { Text, ImageBackground } from 'react-native'
+import React from 'react';
+import { Text, ImageBackground } from 'react-native';
 import { 
     Card,
     CardSection,
     Button,
     LogoBanner
-} from '../common'
+} from '../common';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
@@ -47,19 +47,17 @@ const styles = {
         justifyContent: 'center'
     },
     menuContainerStyle: {
-        flex:.5,
+        flex: 0.5,
         flexDirection: 'column',        
     },
     cardStyle:{
         flex: 1,
         width: '100%',
         height:'100%'
-        
     },
     buttonStyle:{
         backgroundColor:'#1D394B',
     }
+};
 
-  }
-
-export default Landing
+export default Landing;
