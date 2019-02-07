@@ -72,15 +72,16 @@ const RouterComponent = () => {
                             {
                             }
                             </Tabs>
-                            <Scene
-                                key='account'
-                                component={Account}
-                                title='account'
-                                back
-                                onBack={()=>Actions.pop()}
-                                panHandlers
-                            />
+        
                         </Scene>
+                        <Scene
+                            key='account'
+                            component={Account}
+                            title='account'
+                            back
+                            onBack={()=>Actions.pop()}
+                            panHandlers
+                        />
                     </Drawer>
         
                         
