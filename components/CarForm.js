@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { propChanged } from '../actionCreators';
+import { Actions } from 'react-native-router-flux';
+import { propChanged, confirmCarAdded } from '../actionCreators';
 import { Button, Card, CardSection, Input } from './common';
+import CarSuccessModal from './CarSuccessModal';
 
 class CarForm extends Component {
+   state = { showSuccessModal: false };
+
+   saveCarForm() {
+      // TODO TYUN: When onPress, still need to save to DB through action!!!
+      // Will be async call so need a Promise and then do the setState call
+      this.setState({ showSuccessModal: !this.state.showSuccessModal });
+   }
+
+   confirmedCarForm() {
+      this.props.confirmCarAdded();
+      Actions.car();
+   }
+
    render() {
       return (
          <View style={{ flex: 1, backgroundColor: '#E4EDF2' }}>
@@ -15,6 +30,15 @@ class CarForm extends Component {
                      value={this.props.year}
                      onChangeText={text => this.props.propChanged({ prop: 'year', value: text })}
                      placeholder="2019"
+                  />
+               </CardSection>
+
+               <CardSection style={styles.additionalCardSectionStyle}>
+                  <Input
+                     label="Color"
+                     value={this.props.color}
+                     onChangeText={text => this.props.propChanged({ prop: 'color', value: text })}
+                     placeholder="Black"
                   />
                </CardSection>
 
@@ -31,7 +55,7 @@ class CarForm extends Component {
                   <Input
                      label="Model"
                      value={this.props.model}
-                     onChangeText={text => this.props.propChanged({ prop: 'make', value: text })}
+                     onChangeText={text => this.props.propChanged({ prop: 'model', value: text })}
                      placeholder="Civic"
                   />
                </CardSection>
@@ -39,8 +63,14 @@ class CarForm extends Component {
                <CardSection style={styles.additionalCardSectionStyle}>
                   <Button
                      label="Finish"
+                     onPress={this.saveCarForm.bind(this)}
                   />
                </CardSection>
+
+               <CarSuccessModal
+                  visible={this.state.showSuccessModal}
+                  onAccept={this.confirmedCarForm.bind(this)}
+               />
             </Card>
          </View>
       );
@@ -66,8 +96,8 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-   const { year, make, model } = state.carForm;
-   return { year, make, model };
+   const { year, color, make, model } = state.carForm;
+   return { year, color, make, model };
 };
 
-export default connect(mapStateToProps, { propChanged })(CarForm);
+export default connect(mapStateToProps, { propChanged, confirmCarAdded })(CarForm);
