@@ -24,7 +24,7 @@ class SideMenu extends Component {
             <View style={styles.navigationListStyle}>
                <Content>
                   <List>
-                     <ListItem icon onPress={() => Actions.dashboard()}>
+                     <ListItem icon onPress={() => Actions.dashboard({ type: 'reset' })}>
                         <Left>
                            <AntDesign name="bars" size={20} />
                         </Left>
@@ -39,6 +39,24 @@ class SideMenu extends Component {
                         </Left>
                         <Body>
                            <Text>ACCOUNT</Text>
+                        </Body>
+                     </ListItem>
+
+                     <ListItem icon onPress={()=> Actions.verification()}>
+                        <Left>
+                           <AntDesign name="bars" size={20} />
+                        </Left>
+                        <Body>
+                           <Text>VERIFICATION</Text>
+                        </Body>
+                     </ListItem>
+
+                     <ListItem icon onPress={()=> Actions.car()}>
+                        <Left>
+                           <AntDesign name="bars" size={20} />
+                        </Left>
+                        <Body>
+                           <Text>CAR</Text>
                         </Body>
                      </ListItem>
                   </List>

@@ -7,6 +7,9 @@ import Landing from './landing/Landing'
 import LandingGetStarted from './landing/LandingGetStarted'
 import SideMenu from './SideMenu';
 import FindRide from './FindRide';
+import Verification from './Verification';
+import Car from './Car';
+import CarForm from './CarForm';
 
 import Account from './Account';
 import { SideMenuButton } from './common';
@@ -39,7 +42,7 @@ const RouterComponent = () => {
                         title="WayFare"
                         titleStyle={styles.titleStyle}
                         navigationBarStyle={styles.navbarAuthStyle}
-                        navBarButtonColor='#E4EDF2'
+                        navBarButtonColor={colors.whiteBlue}
                     />
                     <Scene  
                         key="findRide"
@@ -72,18 +75,50 @@ const RouterComponent = () => {
                             {
                             }
                             </Tabs>
-                            <Scene
-                                key='account'
-                                component={Account}
-                                title='account'
-                                back
-                                onBack={()=>Actions.pop()}
-                                panHandlers
-                            />
                         </Scene>
+
+                        <Scene
+                            key='account'
+                            component={Account}
+                            title='account'
+                            back
+                            onBack={()=>Actions.pop()}
+                            panHandlers
+                        />
+
+                        <Scene
+                            key="verification"
+                            component={Verification}
+                            title="Verification"
+                            titleStyle={styles.titleStyle}
+                            navigationBarStyle={styles.navbarAuthStyle}
+                            navBarButtonColor={colors.whiteBlue}
+                            back
+                            onBack={() => Actions.pop()}
+                        />
+
+                        <Scene
+                            key="car"
+                            component={Car}
+                            title="My Car"
+                            titleStyle={styles.titleStyle}
+                            navigationBarStyle={styles.navbarAuthStyle}
+                            navBarButtonColor={colors.whiteBlue}
+                            back
+                            onBack={() => Actions.pop()}
+                        />
+
+                        <Scene
+                            key="carForm"
+                            component={CarForm}
+                            title="Add Car"
+                            titleStyle={styles.titleStyle}
+                            navigationBarStyle={styles.navbarAuthStyle}
+                            navBarButtonColor={colors.whiteBlue}
+                            back
+                            onBack={() => Actions.car()}
+                        />
                     </Drawer>
-        
-                        
                 </Scene>
             </Stack>
         </Router>
