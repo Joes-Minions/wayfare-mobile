@@ -2,7 +2,7 @@ import React, {Component } from 'react';
 import { View, Text } from 'react-native';
 import { CardSection, Card, Button} from '../common';
 import  DatePickerForm  from '../findRide/DatePickerForm'
-import  RoundtripForm  from '../findRide/RoundtripForm'
+import SearchBox from '../shareRide/SearchBox'
 import { connect } from 'react-redux'
 import { updateFlowType, renderShareRideFlow, renderFindRideFlow } from '../../actionCreators'
 
@@ -10,7 +10,14 @@ function RenderByIndex(props){
     console.log("current index " + props.index)
     switch(props.index){
         case 1:
-            return  <RoundtripForm/>
+            return (
+                <SearchBox 
+                    // getInputData={getInputData}
+                    // toggleSearchResultModal={toggleSearchResultModal}
+                    // getAddressPredictions={getAddressPredictions}
+                    // selectedAddress={selectedAddress}
+                />
+            )
         case 2:
             return  <DatePickerForm/>
         default:
@@ -129,7 +136,6 @@ const styles = {
         flex:1,
         flexDirection:'column',
         justifyContent:'flex-start',
-        alignItems:'center',
     },
     optionsContainerStyle:{
         flex:1,

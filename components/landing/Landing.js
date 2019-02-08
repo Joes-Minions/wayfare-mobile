@@ -32,7 +32,7 @@ class Landing extends React.Component {
                         
                     />
                     <Button
-                        label="Get Started"
+                        label="Continue without Sign In"
                         onPress={()=>Actions.findRide()}
                         style={styles.buttonStyle}
                     />
