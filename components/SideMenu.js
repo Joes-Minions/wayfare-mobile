@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Content, List, ListItem, Left, Body } from 'native-base';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 class SideMenu extends Component {

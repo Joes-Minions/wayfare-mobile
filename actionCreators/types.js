@@ -40,5 +40,8 @@ export const RETURN_DATE_UPDATED = 'return_date_updated'
 
 // Car Related Constants
 export const CAR_PROP_CHANGED = 'car_prop_changed';
+<<<<<<< HEAD
+=======
 export const CONFIRM_CAR_ADDED = 'confirm_car_added';
 export const CLEAR_CAR_FORM = 'clear_car_form';
+>>>>>>> 5ce3f15a675a33065f840a0f04b19a803b30992b

@@ -15,6 +15,9 @@ import { clearCarForm } from '../actionCreators';
 
 import Account from './Account';
 import { SideMenuButton } from './common';
+import ShareRide from './ShareRide';
+import CurrentRides from './CurrentRides';
+import PastRides from './PastRides';
 
 
 /**
@@ -67,12 +70,18 @@ class RouterComponent extends Component {
                                 <Tabs
                                     key="tabbar"
                                 >
-                                    <Stack title='asd'>
+                                    <Stack title='Find Ride'>
                                         <Scene key="tab1" component={FindRide} />
 
                                     </Stack>
-                                    <Stack>
-                                        <Scene key="tab2" component={FindRide} />
+                                    <Stack title='Share Ride'>
+                                        <Scene key="Share Ride" component={ShareRide} />
+                                    </Stack>
+                                    <Stack title='CurrentRides'>
+                                        <Scene key="Current Rides" component={CurrentRides} />
+                                    </Stack>
+                                    <Stack title='PastRides'>
+                                        <Scene key="Past Rides" component={PastRides} />
                                     </Stack>
                                 {
                                 }
