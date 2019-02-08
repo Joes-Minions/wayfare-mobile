@@ -24,7 +24,7 @@ class SideMenu extends Component {
             <View style={styles.navigationListStyle}>
                <Content>
                   <List>
-                     <ListItem icon onPress={() => Actions.dashboard({ type: 'reset' })}>
+                     <ListItem icon onPress={() => Actions.main({ type: 'reset' })}>
                         <Left>
                            <AntDesign name="bars" size={20} />
                         </Left>
