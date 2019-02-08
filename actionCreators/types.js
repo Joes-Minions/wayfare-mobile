@@ -37,3 +37,6 @@ export const START_LOCATION_UPDATED = 'start_location_updated'
 export const DESTINATION_UPDATED = 'destination_updated'
 export const DEPARTURE_DATE_UPDATED = 'departure_date_updated'
 export const RETURN_DATE_UPDATED = 'return_date_updated'
+
+// Car Related Constants
+export const CAR_PROP_CHANGED = 'car_prop_changed';
