@@ -11,6 +11,7 @@ import FindRide from './FindRide';
 import Verification from './Verification';
 import Car from './Car';
 import CarForm from './CarForm';
+import CarFormEdit from './CarFormEdit';
 import { clearCarForm } from '../actionCreators';
 
 import Account from './Account';
@@ -131,6 +132,17 @@ class RouterComponent extends Component {
                                     this.props.clearCarForm();
                                     Actions.car();
                                 }}
+                            />
+                            
+                            <Scene
+                                key="editCarForm"
+                                component={CarFormEdit}
+                                title="Edit Car"
+                                titleStyle={styles.titleStyle}
+                                navigationBarStyle={styles.navbarAuthStyle}
+                                navBarButtonColor={colors.whiteBlue}
+                                back
+                                onBack={() => Actions.car()}
                             />
                         </Drawer>
                     </Scene>

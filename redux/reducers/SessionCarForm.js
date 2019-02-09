@@ -1,5 +1,9 @@
 import {
-   CAR_PROP_CHANGED, CONFIRM_CAR_ADDED, CLEAR_CAR_FORM
+   CAR_PROP_CHANGED,
+   CONFIRM_CAR_ADDED,
+   CLEAR_CAR_FORM,
+   UPDATE_CAR_FORM,
+   DELETE_CAR_FORM
 } from '../../actionCreators/types';
 
 const INITIAL_STATE = {
@@ -18,6 +22,10 @@ function SessionCarForm (state = INITIAL_STATE, action) {
       case CONFIRM_CAR_ADDED:
          return { ...state };
       case CLEAR_CAR_FORM:
+         return INITIAL_STATE;
+      case UPDATE_CAR_FORM:
+         return action.payload;
+      case DELETE_CAR_FORM:
          return INITIAL_STATE;
       default:
          return state;

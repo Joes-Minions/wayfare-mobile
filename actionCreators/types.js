@@ -42,3 +42,5 @@ export const RETURN_DATE_UPDATED = 'return_date_updated'
 export const CAR_PROP_CHANGED = 'car_prop_changed';
 export const CONFIRM_CAR_ADDED = 'confirm_car_added';
 export const CLEAR_CAR_FORM = 'clear_car_form';
+export const UPDATE_CAR_FORM = 'update_car_form';
+export const DELETE_CAR_FORM = 'delete_car_form';

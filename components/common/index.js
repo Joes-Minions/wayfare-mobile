@@ -5,4 +5,5 @@ export * from './Button'
 export * from './Tabs'
 export * from './Header'
 export * from './Spinner'
-export * from './HeaderWithMenu';
+export * from './HeaderWithMenu'
+export * from './Confirm'
