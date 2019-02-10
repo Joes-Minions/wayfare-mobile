@@ -28,6 +28,7 @@ import PastRides from './PastRides';
 
 
 class RouterComponent extends Component {
+
     render () {
         return (
             <Router>
@@ -76,7 +77,7 @@ class RouterComponent extends Component {
 
                                     </Stack>
                                     <Stack title='Share Ride'>
-                                        <Scene key="Share Ride" component={ShareRide} />
+                                        <Scene key="Share Ride" component={ShareRide}/>
                                     </Stack>
                                     <Stack title='CurrentRides'>
                                         <Scene key="Current Rides" component={CurrentRides} />
@@ -84,8 +85,7 @@ class RouterComponent extends Component {
                                     <Stack title='PastRides'>
                                         <Scene key="Past Rides" component={PastRides} />
                                     </Stack>
-                                {
-                                }
+                                
                                 </Tabs>
                             </Scene>
 

@@ -1,8 +1,8 @@
 import React, {Component } from 'react';
 import { View, Text } from 'react-native';
 import { CardSection, Card, Button} from '../common';
-import  DatePickerForm  from '../findRide/DatePickerForm'
-import SearchBox from '../shareRide/SearchBox'
+import  DatePickerForm  from '../rides/DatePickerForm'
+import SearchBox from '../rides/SearchBox'
 import { connect } from 'react-redux'
 import { updateFlowType, renderShareRideFlow, renderFindRideFlow } from '../../actionCreators'
 

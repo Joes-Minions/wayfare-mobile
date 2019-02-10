@@ -1,12 +1,20 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import SearchBox from './shareRide/SearchBox'
 import { MapView} from 'expo'
+import DatePickerForm from './rides/DatePickerForm';
+import MapLocationPickerForm from './rides/MapLocationPickerForm'
 /**
  *  Scene for ride finding
  */
-function RenderByIndex(){
-
+function RenderByIndex(props){
+    switch(props.index){
+        case 0: 
+            return <MapLocationPickerForm/>
+        case 1:
+            return <DatePickerForm/>
+        default:
+            return <MapLocationPickerForm/>
+    }
 }
 
 class FindRide extends React.Component {
@@ -17,6 +25,16 @@ class FindRide extends React.Component {
         }
         this.renderOptions = this.renderOptions.bind(this)
     }
+    incrementIndex(state){
+        this.setState((state)=>({
+            index: state.index + 1
+        }))
+    }
+    decrementIndex(state){
+        this.setState((state)=>({
+            index: state.index - 1
+        }))
+    }
     renderOptions(){
 
     }
@@ -24,20 +42,8 @@ class FindRide extends React.Component {
     render(){
         return(
             <View style={styles.containerStyle}>
-                <MapView
-                    style={{ flex: 1 }}
-                    initialRegion={{
-                    latitude: 37.78825,
-                    longitude: -122.4324,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
-                }}
-                />
-                <SearchBox 
-                    // getInputData={getInputData}
-                    // toggleSearchResultModal={toggleSearchResultModal}
-                    // getAddressPredictions={getAddressPredictions}
-                    // selectedAddress={selectedAddress}
+                <RenderByIndex
+                    index={this.state.index}
                 />
             </View>
         )

@@ -18,12 +18,12 @@ const styles = {
         margin: 5,
         borderRadius: 10,
         alignItems: 'center',
-        backgroundColor: '#E4AF8D',
+        backgroundColor: '#1D394B',
         opacity: .7
 
     },
     textStyle: {
-        color: 'black',
+        color: 'white',
         fontSize: 16,
         fontWeight: '600',
         paddingTop: 10,
