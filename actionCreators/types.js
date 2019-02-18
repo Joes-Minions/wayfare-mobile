@@ -32,11 +32,14 @@ export const UPDATE_FLOW_TYPE = 'update_flow_type'
 
 // Finding a Ride
 export const ROUNDTRIP_UPDATED =  'roundtrip_updated'
-
 export const START_LOCATION_UPDATED = 'start_location_updated'
 export const DESTINATION_UPDATED = 'destination_updated'
 export const DEPARTURE_DATE_UPDATED = 'departure_date_updated'
 export const RETURN_DATE_UPDATED = 'return_date_updated'
+
+export const GET_RIDE_INPUT_DATA = 'get_ride_input_data';
+export const TOGGLE_SEARCH_RESULT_MODAL = 'toggle_search_result_modal';
+export const GET_CURRENT_LOCATION = 'get_current_location';
 
 // Car Related Constants
 export const CAR_PROP_CHANGED = 'car_prop_changed';
