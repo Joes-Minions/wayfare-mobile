@@ -54,7 +54,7 @@ class ShareRide extends React.Component {
                     <Button
                         label='Next'
                         onPress={this.onNextPress.bind(this)}
-                        style={{flex:1}}
+                        style={{flex:1,opacity:1}}
                     />
                 </View>
                    
@@ -66,12 +66,12 @@ class ShareRide extends React.Component {
                     <Button
                         label='Back'
                         onPress={this.onBackPress.bind(this)}
-                        style={{flex:1}}
+                        style={{flex:1 ,opacity:1}}
                     />
                     <Button
                         label='Next'
                         onPress={this.onNextPress.bind(this)}
-                        style={{flex:1}}
+                        style={{flex:1, opacity:1}}
 
                     />
                 </View>
@@ -97,8 +97,11 @@ const styles = {
      
     },
     optionsContainerStyle:{
-        flexDirection:'row',
-  
+        bottom:0,
+        position:'absolute',
+        flexDirection: 'row',
+        
+        
     }
   }
 

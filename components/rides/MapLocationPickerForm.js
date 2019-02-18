@@ -1,5 +1,6 @@
 import React from 'react'
 import {View} from 'react-native'
+import {Button } from '../common'
 import { MapView } from 'expo'
 import {SearchBox} from './SearchBox'
 
@@ -15,7 +16,7 @@ class MapLocationPickerForm extends React.Component {
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421,
                     }}
-                />
+               />
                 <SearchBox 
                     // getInputData={getInputData}
                     // toggleSearchResultModal={toggleSearchResultModal}
@@ -34,7 +35,6 @@ const styles = {
         flexDirection: 'column',
         justifyContent:'center',      
         backgroundColor: '#E4EDF2'
-
     }
   }
 export default MapLocationPickerForm
