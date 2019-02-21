@@ -38,7 +38,7 @@ class MapLocationPickerForm extends Component {
             { this.props.region.latitude &&
             <MapView
                style={{ flex: 1 }}
-               //initialRegion={this.props.region}
+               initialRegion={this.props.region}
                region={this.props.region}
                showsUserLocation={true}
             >
