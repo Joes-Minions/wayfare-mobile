@@ -33,6 +33,7 @@ class RouterComponent extends Component {
         return (
             <Router>
                 <Stack key='root' hideNavBar>
+                
                     <Scene key='auth'>
                         <Scene
                             key='landing'
@@ -78,10 +79,10 @@ class RouterComponent extends Component {
                                     <Stack title='Share Ride'>
                                         <Scene key="Share Ride" component={ShareRide}/>
                                     </Stack>
-                                    <Stack title='CurrentRides'>
+                                    <Stack title='Current Rides'>
                                         <Scene key="Current Rides" component={CurrentRides} />
                                     </Stack>
-                                    <Stack title='PastRides'>
+                                    <Stack title='Past Rides'>
                                         <Scene key="Past Rides" component={PastRides} />
                                     </Stack>
                                 
