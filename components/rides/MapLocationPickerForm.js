@@ -3,10 +3,12 @@ import { View } from 'react-native';
 import { MapView } from 'expo';
 import { connect } from 'react-redux';
 import SearchBox from './SearchBox';
+import SearchResults from './SearchResults';
 import {
    getRideInputData,
    toggleSearchResultModal,
-   getCurrentLocation
+   getCurrentLocation,
+   getAddressPredictions
 } from '../../actionCreators';
 
 class MapLocationPickerForm extends Component {
@@ -19,9 +21,9 @@ class MapLocationPickerForm extends Component {
       this.props.getCurrentLocation();
    }
 
-   componentDidUpdate(prevProps, prevState) {
+   /*componentDidUpdate(prevProps, prevState) {
       this.props.getCurrentLocation();
-   }
+   }*/
 
    render() {
       const { selectedPickUp, selectedDropOff } = this.props.selectedRouteAddresses || {};
@@ -38,7 +40,8 @@ class MapLocationPickerForm extends Component {
             { this.props.region.latitude &&
             <MapView
                style={{ flex: 1 }}
-               //initialRegion={this.props.region}
+               provider="google"
+               //initialRegion={initialRegion}
                region={this.props.region}
                showsUserLocation={true}
             >
@@ -69,7 +72,7 @@ class MapLocationPickerForm extends Component {
             <SearchBox
                getRideInputData={this.props.getRideInputData}
                toggleSearchResultModal={this.props.toggleSearchResultModal}
-               // getAddressPredictions={getAddressPredictions}
+               getAddressPredictions={this.props.getAddressPredictions}
                selectedAddress={this.props.selectedRouteAddresses}
                selectedDate={this.props.selectedDate}
             />
@@ -106,5 +109,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-   getRideInputData, toggleSearchResultModal, getCurrentLocation
+   getRideInputData, toggleSearchResultModal, getCurrentLocation, getAddressPredictions
 })(MapLocationPickerForm);

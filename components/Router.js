@@ -74,7 +74,6 @@ class RouterComponent extends Component {
                                 >
                                     <Stack title='Find Ride'>
                                         <Scene key="tab1" component={FindRide} />
-
                                     </Stack>
                                     <Stack title='Share Ride'>
                                         <Scene key="Share Ride" component={ShareRide}/>

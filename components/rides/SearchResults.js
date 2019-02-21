@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export const SearchResults = ({ predictions, getSelectedAddress })=> {
 	const handleSelectedAddress = (placeID) => {
-		getSelectedAddress(placeID)
+		//getSelectedAddress(placeID)
 	}
 
    return(
@@ -19,8 +19,8 @@ export const SearchResults = ({ predictions, getSelectedAddress })=> {
                         <Icon style={styles.leftIcon} name="location-on" />
                      </Left>
                      <Body>
-                        <Text style={styles.primaryText}>{item.primaryText}</Text>
-                        <Text style={styles.secondaryText}>{item.secondaryText}</Text>
+                        <Text style={styles.primaryText}>{item.structured_formatting.main_text}</Text>
+                        <Text style={styles.secondaryText}>{item.structured_formatting.secondary_text}</Text>
                      </Body>
                   </ListItem>
                </View>

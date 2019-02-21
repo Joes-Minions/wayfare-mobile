@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
 import { Button, View, InputGroup, Input } from 'native-base';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -16,14 +17,16 @@ class SearchBox extends Component {
 			toggleSearchResultModal,
 			getAddressPredictions,
 			selectedRouteAddresses,
-			selectedDate
+			selectedDate,
+			searchResultTypes,
+			inputData
 		} = this.props;
 
 		const { selectedPickUp, selectedDropOff } = selectedRouteAddresses || {};
 
 		const handleInput = (key, val) => {
-			getRideInputData({ key, value:val });
-			//getAddressPredictions();
+			getRideInputData({ inputType: key, inputData: val });
+			getAddressPredictions({ searchResultTypes, inputData });
 		};
 
 		const renderDateButton = () => {
@@ -140,4 +143,9 @@ const styles = {
     }
 };
 
-export default SearchBox;
+const mapStateToProps = (state) => {
+	const { searchResultTypes, inputData } = state.findRideForm;
+	return { searchResultTypes, inputData };
+};
+
+export default connect(mapStateToProps)(SearchBox);
