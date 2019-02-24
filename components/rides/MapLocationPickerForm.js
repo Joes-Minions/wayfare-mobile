@@ -20,7 +20,7 @@ class MapLocationPickerForm extends Component {
    }
 
    componentDidUpdate(prevProps, prevState) {
-      this.props.getCurrentLocation();
+      //this.props.getCurrentLocation();
    }
 
    render() {

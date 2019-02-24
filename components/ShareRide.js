@@ -64,7 +64,7 @@ class ShareRide extends React.Component {
                 <Modal isVisible={this.state.isModalVisible}>
                     <View style={styles.modalContainerStyle}> 
                     
-                            <Card>
+                            <View style={styles.modalSectionStyle}>
                                 <Text style={styles.modalTextStyle}>
                                     Approximate Time of Departure
                                 </Text>
@@ -74,16 +74,19 @@ class ShareRide extends React.Component {
                                     onPress={value => console.log(`Call onPress with value: ${value}`)}
                                 />
                             
-                            </Card>
-                            <Card>
+                            </View>
+                            <View style={styles.modalSectionStyle}>
                                 <Text style={styles.modalTextStyle}>
                                     Capacity
                                 </Text>
                                 <NumericInput onChange={value => console.log(value)} />
+                            </View>
+                            <Card style={styles.modalSectionStyle}>
+                                <TouchableOpacity style={{flexDirection:'column', justifyContent:'center'}} onPress={this._toggleModal}>
+                                    <Text style={styles.modalTextStyle}>Save</Text>
+                                </TouchableOpacity>
                             </Card>
-                            <TouchableOpacity onPress={this._toggleModal}>
-                                <Text>Hide me!</Text>
-                            </TouchableOpacity>
+                           
                      </View>
                 </Modal>
             </View>
@@ -104,13 +107,21 @@ const styles = {
         marginLeft: 15,
     },
     modalContainerStyle:{
-        flex:1,
-        flexDirection:'column',
-        alignItems:'stretch',
-
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        flex:.8
     },
     modalTextStyle:{
-        color:'white'
+        color:'white',
+        fontSize: 25
+    },
+    modalSectionStyle:{
+        height: '20%',
+        flexDirection:'column',
+        alignItems:'center',
+        flex:1
+
     }
   }
 

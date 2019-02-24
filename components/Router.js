@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Scene, Router, Tabs, Stack, Drawer, ActionConst, Actions } from 'react-native-router-flux'
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
-import Dashboard from './Dashboard'
 import LandingAuth from './landing/LandingAuth'
 import Landing from './landing/Landing'
 import LandingGetStarted from './landing/LandingGetStarted'
