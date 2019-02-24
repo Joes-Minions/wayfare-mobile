@@ -40,6 +40,7 @@ export const RETURN_DATE_UPDATED = 'return_date_updated'
 export const GET_RIDE_INPUT_DATA = 'get_ride_input_data';
 export const TOGGLE_SEARCH_RESULT_MODAL = 'toggle_search_result_modal';
 export const GET_CURRENT_LOCATION = 'get_current_location';
+export const GET_ADDRESS_PREDICTIONS = 'get_address_predictions';
 
 // Car Related Constants
 export const CAR_PROP_CHANGED = 'car_prop_changed';

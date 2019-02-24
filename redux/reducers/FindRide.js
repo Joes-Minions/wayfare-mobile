@@ -8,7 +8,8 @@ import {
     TOGGLE_ROUNDTRIP,
     GET_RIDE_INPUT_DATA,
     TOGGLE_SEARCH_RESULT_MODAL,
-    GET_CURRENT_LOCATION
+    GET_CURRENT_LOCATION,
+    GET_ADDRESS_PREDICTIONS
   } from '../../actionCreators/types'
 import { Actions } from 'react-native-router-flux';
   
@@ -33,7 +34,7 @@ const INITIAL_STATE = {
 };
   
 function FindRideForm (state = INITIAL_STATE, action) {
-    console.log("in find ride reducer")
+    console.log("In FindRideForm Reducer");
     switch (action.type) {
         case ROUNDTRIP_UPDATED:
             return { ...state, roundTrip: action.payload}
@@ -52,14 +53,14 @@ function FindRideForm (state = INITIAL_STATE, action) {
             };
             return { ...state, inputData };
         case TOGGLE_SEARCH_RESULT_MODAL:
-            const searchResultTypes = {};
-            if (action.payload === "pickup") {
+            var searchResultTypes = {};
+            if (action.payload === "pickUp") {
                 searchResultTypes = {
                     pickUp: true,
                     dropOff: false
                 }
             }
-            if (action.payload === "dropoff") {
+            if (action.payload === "dropOff") {
                 searchResultTypes = {
                     pickUp: false,
                     dropOff: true
@@ -73,7 +74,9 @@ function FindRideForm (state = INITIAL_STATE, action) {
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421
             };
-            return { ...state, region }
+            return { ...state, region };
+        case GET_ADDRESS_PREDICTIONS:
+            return { ...state, predictions: action.payload.predictions }
         default:
             return state
     }

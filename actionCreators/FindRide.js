@@ -8,10 +8,12 @@ import {
     RETURN_DATE_UPDATED,
     GET_RIDE_INPUT_DATA,
     TOGGLE_SEARCH_RESULT_MODAL,
-    GET_CURRENT_LOCATION
+    GET_CURRENT_LOCATION,
+    GET_ADDRESS_PREDICTIONS
     } from './types'
 import { Actions } from 'react-native-router-flux'
 import firebase from 'firebase'
+import apiKey from '../google-api-key'
 
 export const roundtripUpdated = (roundTrip) => {
     console.log("INSIDE ACTION CREATOR "+ roundTrip)
@@ -37,7 +39,35 @@ export const toggleSearchResultModal = (searchType) => {
     };
 };
 
-//export const getAddressPredictions = ()
+async function fetchAddressPredictions(apiUrl) {
+    try {
+        const response = await fetch(apiUrl)
+        const json = await response.json();
+        console.log(json);
+        return json;
+    }
+    catch (err) {
+        console.error(err);
+    }
+}
+
+export const getAddressPredictions = ({ searchResultTypes, inputData }) => {
+    var input = searchResultTypes.pickUp ? inputData.pickUp : inputData.dropOff;
+    const apiUrl = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${apiKey}
+        &input=${input}&radius=2000`;
+
+    return (dispatch) => {
+        console.log(apiUrl);
+        fetchAddressPredictions(apiUrl)
+            .then((predictions) => 
+                dispatch({
+                    type: GET_ADDRESS_PREDICTIONS,
+                    payload: predictions
+                })
+            )
+            .catch((error) => console.error(error));
+    };
+};
 
 export const getCurrentLocation = () => {
     return (dispatch) => {
