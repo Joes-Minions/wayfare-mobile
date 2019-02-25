@@ -1,14 +1,9 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
-import { propChanged } from '../actionCreators';
 import { Button } from 'native-base'
-import { Card } from './common'
 import MapLocationPickerForm from './rides/MapLocationPickerForm'
 import PreferencesForm from './rides/PreferencesForm'
-import Modal from "react-native-modal"
 import Icon from 'react-native-vector-icons/FontAwesome';
-import SwitchSelector from "react-native-switch-selector";
-import NumericInput from 'react-native-numeric-input'
 
 /**
  *  Scene for ride sharing
@@ -48,47 +43,13 @@ class ShareRide extends React.Component {
             )
     }
     render(){
-        const options = [
-            { label: "Morning", value: "1" },
-            { label: "Afternoon", value: "1.5" },
-            { label: "Night", value: "2" }
-          ]
-
         return(
             <View style={styles.containerStyle}>
                 <MapLocationPickerForm/>
                 <View style={styles.optionsContainerStyle}>
                     {this.renderOptions()}
                 </View>
-                
-                <Modal isVisible={this.state.isModalVisible}>
-                    <View style={styles.modalContainerStyle}> 
-                    
-                            <View style={styles.modalSectionStyle}>
-                                <Text style={styles.modalTextStyle}>
-                                    Approximate Time of Departure
-                                </Text>
-                                <SwitchSelector
-                                    options={options}
-                                    initial={0}
-                                    onPress={value => console.log(`Call onPress with value: ${value}`)}
-                                />
-                            
-                            </View>
-                            <View style={styles.modalSectionStyle}>
-                                <Text style={styles.modalTextStyle}>
-                                    Capacity
-                                </Text>
-                                <NumericInput onChange={value => console.log(value)} />
-                            </View>
-                            <Card style={styles.modalSectionStyle}>
-                                <TouchableOpacity style={{flexDirection:'column', justifyContent:'center'}} onPress={this._toggleModal}>
-                                    <Text style={styles.modalTextStyle}>Save</Text>
-                                </TouchableOpacity>
-                            </Card>
-                           
-                     </View>
-                </Modal>
+                <PreferencesForm isModalVisible={this.state.isModalVisible} toggleHandler={this._toggleModal}/>
             </View>
         )
     }
@@ -105,24 +66,7 @@ const styles = {
         position:'absolute',
         flexDirection: 'row',
         marginLeft: 15,
-    },
-    modalContainerStyle:{
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'stretch',
-        flex:.8
-    },
-    modalTextStyle:{
-        color:'white',
-        fontSize: 25
-    },
-    modalSectionStyle:{
-        height: '20%',
-        flexDirection:'column',
-        alignItems:'center',
-        flex:1
-
     }
-  }
+}
 
 export default ShareRide
