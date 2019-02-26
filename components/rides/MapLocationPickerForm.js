@@ -8,7 +8,8 @@ import {
    getRideInputData,
    toggleSearchResultModal,
    getCurrentLocation,
-   getAddressPredictions
+   getAddressPredictions,
+   getSelectedRouteAddresses
 } from '../../actionCreators';
 
 class MapLocationPickerForm extends Component {
@@ -49,8 +50,8 @@ class MapLocationPickerForm extends Component {
                { selectedPickUp &&
                   <MapView.Marker
                      coordinate={{
-                        latitude: selectedPickUp.latitude,
-                        longitude: selectedPickUp.longitude
+                        latitude: selectedPickUp.result.geometry.location.lat,
+                        longitude: selectedPickUp.result.geometry.location.lng
                      }}
                      pinColor="green"
                   />	
@@ -59,8 +60,8 @@ class MapLocationPickerForm extends Component {
                { selectedDropOff &&
                   <MapView.Marker
                      coordinate={{
-                        latitude: selectedDropOff.latitude,
-                        longitude:selectedDropOff.longitude
+                        latitude: selectedDropOff.result.geometry.location.lat,
+                        longitude: selectedDropOff.result.geometry.location.lng
                      }}
                      pinColor="blue"
                   />	
@@ -73,7 +74,7 @@ class MapLocationPickerForm extends Component {
                getRideInputData={this.props.getRideInputData}
                toggleSearchResultModal={this.props.toggleSearchResultModal}
                getAddressPredictions={this.props.getAddressPredictions}
-               selectedAddress={this.props.selectedRouteAddresses}
+               selectedRouteAddresses={this.props.selectedRouteAddresses}
                selectedDate={this.props.selectedDate}
             />
 
@@ -81,7 +82,7 @@ class MapLocationPickerForm extends Component {
             {  (this.props.searchResultTypes.pickUp || this.props.searchResultTypes.dropOff) &&
                <SearchResults
                   predictions={this.props.predictions}
-                  //getSelectedRouteAddresses={getSelectedRouteAddresses}
+                  getSelectedRouteAddresses={this.props.getSelectedRouteAddresses}
                />
 			   }
          </View> 
@@ -100,7 +101,7 @@ const styles = {
 
 const mapStateToProps = (state) => {
    return {
-      selectedAddress: state.findRideForm.selectedAddress || {},
+      selectedRouteAddresses: state.findRideForm.selectedRouteAddresses || {},
       searchResultTypes: state.findRideForm.searchResultTypes || {},
       predictions: state.findRideForm.predictions || [],
       region: state.findRideForm.region,
@@ -109,5 +110,9 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-   getRideInputData, toggleSearchResultModal, getCurrentLocation, getAddressPredictions
+   getRideInputData,
+   toggleSearchResultModal,
+   getCurrentLocation,
+   getAddressPredictions,
+   getSelectedRouteAddresses
 })(MapLocationPickerForm);

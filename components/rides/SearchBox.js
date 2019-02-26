@@ -65,7 +65,7 @@ class SearchBox extends Component {
 							style={styles.inputSearch}
 							placeholder="Choose pick-up location"
 							onChangeText={handleInput.bind(this, "pickUp")}
-							value={selectedPickUp && selectedPickUp.name}
+							value={selectedPickUp && selectedPickUp.result.name}
 						/>
 					</InputGroup>
 				</View>
@@ -78,7 +78,7 @@ class SearchBox extends Component {
 							style={styles.inputSearch}
 							placeholder="Choose drop-off location"
 							onChangeText={handleInput.bind(this, "dropOff")}
-							value={selectedDropOff && selectedDropOff.name}
+							value={selectedDropOff && selectedDropOff.result.name}
 						/>
 					</InputGroup>
 				</View>

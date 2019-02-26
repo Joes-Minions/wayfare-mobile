@@ -9,7 +9,8 @@ import {
     GET_RIDE_INPUT_DATA,
     TOGGLE_SEARCH_RESULT_MODAL,
     GET_CURRENT_LOCATION,
-    GET_ADDRESS_PREDICTIONS
+    GET_ADDRESS_PREDICTIONS,
+    GET_SELECTED_ROUTE_ADDRESSES
   } from '../../actionCreators/types'
 import { Actions } from 'react-native-router-flux';
   
@@ -59,12 +60,18 @@ function FindRideForm (state = INITIAL_STATE, action) {
                     pickUp: true,
                     dropOff: false
                 }
+                const selectedRouteAddresses = state.selectedRouteAddresses;
+                selectedRouteAddresses.selectedPickUp = null;
+                return { ...state, searchResultTypes, predictions: {}, selectedRouteAddresses };
             }
             if (action.payload === "dropOff") {
                 searchResultTypes = {
                     pickUp: false,
                     dropOff: true
                 }
+                const selectedRouteAddresses = state.selectedRouteAddresses;
+                selectedRouteAddresses.selectedDropOff = null;
+                return { ...state, searchResultTypes, predictions: {}, selectedRouteAddresses };
             }
             return { ...state, searchResultTypes, predictions: {} };
         case GET_CURRENT_LOCATION:
@@ -76,9 +83,23 @@ function FindRideForm (state = INITIAL_STATE, action) {
             };
             return { ...state, region };
         case GET_ADDRESS_PREDICTIONS:
-            return { ...state, predictions: action.payload.predictions }
+            return { ...state, predictions: action.payload.predictions };
+        case GET_SELECTED_ROUTE_ADDRESSES:
+            const selectedRouteAddresses = state.selectedRouteAddresses;
+            if (state.searchResultTypes.pickUp) {
+                selectedRouteAddresses.selectedPickUp = action.payload;
+            }
+            else {
+                selectedRouteAddresses.selectedDropOff = action.payload;
+            }
+            // Untoggle search result predictions when an address is selected
+            let searchResultTypes = {
+                pickUp: false,
+                dropOff: false
+            };
+            return { ...state, searchResultTypes, selectedRouteAddresses };
         default:
-            return state
+            return state;
     }
 }
   

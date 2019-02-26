@@ -3,18 +3,18 @@ import { Text, Dimensions } from 'react-native';
 import { View, List, ListItem, Left, Body } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export const SearchResults = ({ predictions, getSelectedAddress })=> {
-	const handleSelectedAddress = (placeID) => {
-		//getSelectedAddress(placeID)
+export const SearchResults = ({ predictions, getSelectedRouteAddresses })=> {
+	const handleSelectedAddress = (placeId) => {
+		getSelectedRouteAddresses(placeId);
 	}
 
    return(
-      <View style={styles.searchResultsWrapper} >
+      <View style={styles.searchResultsWrapper}>
          <List 
             dataArray={predictions}
             renderRow={(item)=>
                <View>
-                  <ListItem onPress={()=>handleSelectedAddress(item.placeID)} button avatar>
+                  <ListItem onPress={()=>handleSelectedAddress(item.place_id)} button avatar>
                      <Left style={styles.leftContainer}>
                         <Icon style={styles.leftIcon} name="location-on" />
                      </Left>

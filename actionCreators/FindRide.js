@@ -9,7 +9,8 @@ import {
     GET_RIDE_INPUT_DATA,
     TOGGLE_SEARCH_RESULT_MODAL,
     GET_CURRENT_LOCATION,
-    GET_ADDRESS_PREDICTIONS
+    GET_ADDRESS_PREDICTIONS,
+    GET_SELECTED_ROUTE_ADDRESSES
     } from './types'
 import { Actions } from 'react-native-router-flux'
 import firebase from 'firebase'
@@ -39,7 +40,7 @@ export const toggleSearchResultModal = (searchType) => {
     };
 };
 
-async function fetchAddressPredictions(apiUrl) {
+async function fetchGoogleApi(apiUrl) {
     try {
         const response = await fetch(apiUrl)
         const json = await response.json();
@@ -58,7 +59,7 @@ export const getAddressPredictions = ({ searchResultTypes, inputData }) => {
 
     return (dispatch) => {
         console.log(apiUrl);
-        fetchAddressPredictions(apiUrl)
+        fetchGoogleApi(apiUrl)
             .then((predictions) => 
                 dispatch({
                     type: GET_ADDRESS_PREDICTIONS,
@@ -82,4 +83,28 @@ export const getCurrentLocation = () => {
 			{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
 		);
 	};
+};
+
+// function conditionalDisplayRoute() {
+
+// }
+
+export const getSelectedRouteAddresses = (placeId) => {
+    const apiUrl = `https://maps.googleapis.com/maps/api/place/details/json?key=${apiKey}
+        &placeid=${placeId}`;
+
+    return (dispatch) => {
+        console.log(apiUrl);
+        fetchGoogleApi(apiUrl)
+            .then((placeDetails) => {
+                dispatch({
+                    type: GET_SELECTED_ROUTE_ADDRESSES,
+                    payload: placeDetails
+                })
+            })
+            // Will display the directions of route if both pickUp
+            // and dropOff addresses are in the Redux state
+            //.then(() => conditionalDisplayRoute())
+            .catch((error) => console.log(error));
+    };
 };
