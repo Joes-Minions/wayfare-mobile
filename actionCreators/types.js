@@ -43,6 +43,13 @@ export const GET_CURRENT_LOCATION = 'get_current_location';
 export const GET_ADDRESS_PREDICTIONS = 'get_address_predictions';
 export const GET_SELECTED_ROUTE_ADDRESSES = 'get_selected_route_addresses';
 
+// Sharing a Ride
+export const GET_RIDE_INPUT_DATA_SHARE = 'get_ride_input_data_share';
+export const TOGGLE_SEARCH_RESULT_MODAL_SHARE = 'toggle_search_result_modal_share';
+export const GET_CURRENT_LOCATION_SHARE = 'get_current_location_share';
+export const GET_ADDRESS_PREDICTIONS_SHARE = 'get_address_predictions_share';
+export const GET_SELECTED_ROUTE_ADDRESSES_SHARE = 'get_selected_route_addresses_share';
+
 // Car Related Constants
 export const CAR_PROP_CHANGED = 'car_prop_changed';
 export const CONFIRM_CAR_ADDED = 'confirm_car_added';

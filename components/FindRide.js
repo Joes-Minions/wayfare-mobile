@@ -1,52 +1,56 @@
-import React from 'react'
-import { Text, View } from 'react-native'
-import { MapView} from 'expo'
-import DatePickerForm from './rides/DatePickerForm';
-import MapLocationPickerForm from './rides/MapLocationPickerForm'
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { MapView } from 'expo';
+//import DatePickerForm from './rides/DatePickerForm';
+import MapLocationPickerForm from './rides/MapLocationPickerForm';
+import {
+    getRideInputData,
+    toggleSearchResultModal,
+    getCurrentLocation,
+    getAddressPredictions,
+    getSelectedRouteAddresses
+} from '../actionCreators';
 /**
  *  Scene for ride finding
  */
-function RenderByIndex(props){
-    switch(props.index){
-        case 0: 
-            return <MapLocationPickerForm/>
-        case 1:
-            return <DatePickerForm/>
-        default:
-            return <MapLocationPickerForm/>
-    }
-}
 
-class FindRide extends React.Component {
-    constructor(){
-        super()
-        this.state = {
-            index : 0
-        }
-        this.renderOptions = this.renderOptions.bind(this)
-    }
-    incrementIndex(state){
-        this.setState((state)=>({
-            index: state.index + 1
-        }))
-    }
-    decrementIndex(state){
-        this.setState((state)=>({
-            index: state.index - 1
-        }))
-    }
-    renderOptions(){
+class FindRide extends Component {
+    render() {
+        const {
+            // Action Creators that will be passed to MapLocationPickerForm
+            getRideInputData,
+            toggleSearchResultModal,
+            getCurrentLocation,
+            getAddressPredictions,
+            getSelectedRouteAddresses,
 
-    }
+            // State from Redux store for FindRide passed into MapLocationPickerForm
+            selectedRouteAddresses,
+            searchResultTypes,
+            predictions,
+            region,
+            selectedDate,
+            inputData
+        } = this.props;
 
-    render(){
-        return(
+        return (
             <View style={styles.containerStyle}>
-                <RenderByIndex
-                    index={this.state.index}
+                <MapLocationPickerForm
+                    getRideInputData={getRideInputData}
+                    toggleSearchResultModal={toggleSearchResultModal}
+                    getCurrentLocation={getCurrentLocation}
+                    getAddressPredictions={getAddressPredictions}
+                    getSelectedRouteAddresses={getSelectedRouteAddresses}
+                    selectedRouteAddresses={selectedRouteAddresses}
+                    searchResultTypes={searchResultTypes}
+                    predictions={predictions}
+                    region={region}
+                    selectedDate={selectedDate}
+                    inputData={inputData}
                 />
             </View>
-        )
+        );
     }
 }
 const styles = {
@@ -55,8 +59,24 @@ const styles = {
         flexDirection: 'column',
         justifyContent:'center',      
         backgroundColor: '#E4EDF2'
-
     }
-  }
+};
 
-export default FindRide
+const mapStateToProps = (state) => {
+    return {
+        selectedRouteAddresses: state.findRideForm.selectedRouteAddresses || {},
+        searchResultTypes: state.findRideForm.searchResultTypes || {},
+        predictions: state.findRideForm.predictions || [],
+        region: state.findRideForm.region,
+        selectedDate: state.findRideForm.selectedDate || {},
+        inputData: state.findRideForm.inputData
+    };
+};
+
+export default connect(mapStateToProps, {
+    getRideInputData,
+    toggleSearchResultModal,
+    getCurrentLocation,
+    getAddressPredictions,
+    getSelectedRouteAddresses
+})(FindRide);

@@ -3,6 +3,7 @@ import Session from './Session'
 import CreateUser from './CreateUser'
 import GetStarted from './GetStarted';
 import FindRideForm from './FindRide';
+import ShareRideForm from './ShareRide';
 import SessionCarForm from './SessionCarForm';
 
 const rootReducer = combineReducers({ 
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
     createUserForm: CreateUser,
     getStartedFlow: GetStarted,
     findRideForm: FindRideForm,
+    shareRideForm: ShareRideForm,
     carForm: SessionCarForm
 })
 

@@ -6,15 +6,16 @@ import {
     DESTINATION_UPDATED,
     DEPARTURE_DATE_UPDATED,
     RETURN_DATE_UPDATED,
-    GET_RIDE_INPUT_DATA,
-    TOGGLE_SEARCH_RESULT_MODAL,
-    GET_CURRENT_LOCATION,
-    GET_ADDRESS_PREDICTIONS,
-    GET_SELECTED_ROUTE_ADDRESSES
+    GET_RIDE_INPUT_DATA_SHARE,
+    TOGGLE_SEARCH_RESULT_MODAL_SHARE,
+    GET_CURRENT_LOCATION_SHARE,
+    GET_ADDRESS_PREDICTIONS_SHARE,
+    GET_SELECTED_ROUTE_ADDRESSES_SHARE
 } from './types';
 import apiKey from '../google-api-key';
 
-export const roundtripUpdated = (roundTrip) => {
+// TODO TYUN: Still need to add new action type and add new reducer for it
+export const roundtripUpdatedForShareRide = (roundTrip) => {
     console.log("INSIDE ACTION CREATOR "+ roundTrip)
     return (dispatch) =>{
         dispatch({
@@ -24,21 +25,22 @@ export const roundtripUpdated = (roundTrip) => {
     }
 }
 
-export const getRideInputData = ({ inputType, inputData }) => {
+export const getRideInputDataForShareRide = ({ inputType, inputData }) => {
     return {
-        type: GET_RIDE_INPUT_DATA,
+        type: GET_RIDE_INPUT_DATA_SHARE,
         payload: { inputType, inputData }
     };
 };
 
-export const toggleSearchResultModal = (searchType) => {
+export const toggleSearchResultModalForShareRide = (searchType) => {
+    console.log(searchType + " search result modal toggled.");
     return {
-        type: TOGGLE_SEARCH_RESULT_MODAL,
+        type: TOGGLE_SEARCH_RESULT_MODAL_SHARE,
         payload: searchType
     };
 };
 
-async function fetchGoogleApi(apiUrl) {
+async function fetchGoogleApiForShareRide(apiUrl) {
     try {
         const response = await fetch(apiUrl)
         const json = await response.json();
@@ -50,17 +52,17 @@ async function fetchGoogleApi(apiUrl) {
     }
 }
 
-export const getAddressPredictions = ({ searchResultTypes, inputData }) => {
+export const getAddressPredictionsForShareRide = ({ searchResultTypes, inputData }) => {
     var input = searchResultTypes.pickUp ? inputData.pickUp : inputData.dropOff;
     const apiUrl = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${apiKey}
         &input=${input}&radius=2000`;
 
     return (dispatch) => {
         console.log(apiUrl);
-        fetchGoogleApi(apiUrl)
+        fetchGoogleApiForShareRide(apiUrl)
             .then((predictions) => 
                 dispatch({
-                    type: GET_ADDRESS_PREDICTIONS,
+                    type: GET_ADDRESS_PREDICTIONS_SHARE,
                     payload: predictions
                 })
             )
@@ -68,12 +70,12 @@ export const getAddressPredictions = ({ searchResultTypes, inputData }) => {
     };
 };
 
-export const getCurrentLocation = () => {
+export const getCurrentLocationForShareRide = () => {
     return (dispatch) => {
 		navigator.geolocation.getCurrentPosition(
 			position => {
 				dispatch({
-					type:GET_CURRENT_LOCATION,
+					type:GET_CURRENT_LOCATION_SHARE,
 					payload:position
 				});
 			},
@@ -87,16 +89,16 @@ export const getCurrentLocation = () => {
 
 // }
 
-export const getSelectedRouteAddresses = (placeId) => {
+export const getSelectedRouteAddressesForShareRide = (placeId) => {
     const apiUrl = `https://maps.googleapis.com/maps/api/place/details/json?key=${apiKey}
         &placeid=${placeId}`;
 
     return (dispatch) => {
         console.log(apiUrl);
-        fetchGoogleApi(apiUrl)
+        fetchGoogleApiForShareRide(apiUrl)
             .then((placeDetails) => {
                 dispatch({
-                    type: GET_SELECTED_ROUTE_ADDRESSES,
+                    type: GET_SELECTED_ROUTE_ADDRESSES_SHARE,
                     payload: placeDetails
                 })
             })
