@@ -5,18 +5,14 @@ import  DatePickerForm  from '../rides/DatePickerForm'
 import SearchBox from '../rides/SearchBox'
 import { connect } from 'react-redux'
 import { updateFlowType, renderShareRideFlow, renderFindRideFlow } from '../../actionCreators'
+import MapLocationPickerForm from '../rides/MapLocationPickerForm';
 
 function RenderByIndex(props){
     console.log("current index " + props.index)
     switch(props.index){
         case 1:
             return (
-                <SearchBox 
-                    // getInputData={getInputData}
-                    // toggleSearchResultModal={toggleSearchResultModal}
-                    // getAddressPredictions={getAddressPredictions}
-                    // selectedAddress={selectedAddress}
-                />
+                <MapLocationPickerForm/>
             )
         case 2:
             return  <DatePickerForm/>
@@ -156,3 +152,6 @@ export default connect(mapStateToProps,{
     renderShareRideFlow,
     renderFindRideFlow
 })(LandingGetStarted)
+
+
+

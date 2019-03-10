@@ -3,7 +3,6 @@ import { Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux';
 import { Button } from 'native-base'
 import MapLocationPickerForm from './rides/MapLocationPickerForm'
-import PreferencesForm from './rides/PreferencesForm'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
     getRideInputDataForShareRide,
@@ -83,10 +82,6 @@ class ShareRide extends React.Component {
                     selectedDate={selectedDate}
                     inputData={inputData}
                 />
-                <View style={styles.optionsContainerStyle}>
-                    {this.renderOptions()}
-                </View>
-                <PreferencesForm isModalVisible={this.state.isModalVisible} toggleHandler={this._toggleModal}/>
             </View>
         )
     }

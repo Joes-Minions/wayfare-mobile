@@ -8,7 +8,8 @@ class PreferencesForm extends React.Component{
     render(){
         const {
             isModalVisible,
-            toggleHandler
+            toggleHandler,
+            findPrefererences
         } = this.props;
         
         const departureOptions = [
@@ -57,7 +58,6 @@ class PreferencesForm extends React.Component{
                             <TouchableOpacity style={{backgroundColor:'#2F5167', flexDirection:'column', justifyContent:'center',flex:1, alignItems:'center' }} onPress={toggleHandler}>
                                 <Text style={styles.modalTextStyle}>Save</Text>
                             </TouchableOpacity>
-                        
                     </View>
                 </Modal>
         )

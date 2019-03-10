@@ -3,11 +3,13 @@ import { Text, Dimensions } from 'react-native';
 import { Button, View, InputGroup, Input } from 'native-base';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import PreferencesForm from './PreferencesForm'
 
 //({ getRideInputData, toggleSearchResultModal, getAddressPredictions, selectedRouteAddresses, selectedDate })
 class SearchBox extends Component {
 	state = {
-		isDateTimePickerVisible: false
+		isDateTimePickerVisible: false,
+		isPreferenceModalVisible: false
 	};
 
 	render() {
@@ -27,7 +29,7 @@ class SearchBox extends Component {
 			getRideInputData({ inputType: key, inputData: val });
 			getAddressPredictions({ searchResultTypes, inputData });
 		};
-
+		
 		const renderDateButton = () => {
 			if (selectedDate === {}) {
 				return (
@@ -48,10 +50,22 @@ class SearchBox extends Component {
 			);
 		};
 
+		const renderPreferencesButton = () =>{
+			return(
+				<View style={{ flexDirection: 'row', marginLeft: 5, marginRight: 5 }}>
+						<Icon style={{ marginRight: 5 }} name="edit" color="white" />
+						<Text style={{ color: "white" }}>Set Preferences</Text>
+				</View>
+			)
+		}
+
 		const handleDatePicked = (date) => {
 			console.log(date);
 			this.setState({ isDateTimePickerVisible: false });
 		};
+
+		_saveModal = () =>
+        	this.setState({ isPreferenceModalVisible: false });
 
 		return (
 			<View style={styles.searchBox}>
@@ -81,7 +95,7 @@ class SearchBox extends Component {
 						/>
 					</InputGroup>
 				</View>
-				<View style={styles.dateButtonWrapper}>
+				<View style={styles.buttonsWrapper}>
 					<Button
 						small
 						iconLeft
@@ -90,12 +104,25 @@ class SearchBox extends Component {
 					>
 						{renderDateButton()}
 					</Button>
+					<Button
+						small
+						iconLeft
+						warning
+						onPress={()=> this.setState({ isPreferenceModalVisible: true})}
+					>
+						{renderPreferencesButton()}
+					</Button>
 				</View>
 				<DateTimePicker
 					isVisible={this.state.isDateTimePickerVisible}
 					onConfirm={handleDatePicked.bind(this)}
 					onCancel={() => this.setState({ isDateTimePickerVisible: false })}
 				/>
+				<PreferencesForm 
+					isModalVisible={this.state.isPreferenceModalVisible} 
+					toggleHandler={_saveModal.bind(this)}
+				/>
+
 			</View>
 		);
 	}
@@ -126,9 +153,12 @@ const styles = {
         opacity: 0.9,
         borderRadius: 7
 	},
-	dateButtonWrapper: {
+	buttonsWrapper: {
 		marginLeft: 15,
-		marginTop: 5
+		marginRight: 15,
+		marginTop: 5,
+		flexDirection: 'row',
+		justifyContent: 'space-between'
 	},
     inputSearch: {
         fontSize: 14
